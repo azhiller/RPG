@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>RPG Adventure</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>RPG Adventure</h1>
+        </header>
+
+        <section id="character-info">
+            <h2>Informações do Personagem</h2>
+            <form id="character-form">
+                <label for="character-name">Nome:</label>
+                <input type="text" id="character-name" placeholder="Digite o nome do seu personagem">
+
+                <label for="character-level">Nível:</label>
+                <input type="number" id="character-level" placeholder="Digite o nível do seu personagem">
+
+                <label for="character-hp">Vida:</label>
+                <input type="number" id="character-hp" placeholder="Digite os pontos de vida do seu personagem">
+
+                <button type="submit">Atualizar Personagem</button>
+            </form>
+        </section>
+
+        <section id="inventory">
+            <h2>Inventário</h2>
+            <label for="inventory-item">Item:</label>
+            <input type="text" id="inventory-item" placeholder="Digite um item">
+            <button id="add-item-btn">Adicionar Item</button>
+            <ul id="inventory-list">
+                <!-- Itens do inventário serão adicionados dinamicamente aqui -->
+            </ul>
+        </section>
+
+        <section id="qualities-and-defects">
+            <h2>Qualidades e Defeitos</h2>
+            <label for="qualities-defects-item">Qualidade/Defeito:</label>
+            <input type="text" id="qualities-defects-item" placeholder="Digite uma qualidade/defeito">
+            <button id="add-qualities-defects-btn">Adicionar Qualidade e Defeito</button>
+            <ul id="qualities-defects-list">
+                <!-- Itens de qualidade/defeito serão adicionados dinamicamente aqui -->
+            </ul>
+        </section>
+
+        <section id="attributes">
+            <h2>Atributos</h2>
+            <label for="attributes-item">Atributo:</label>
+            <input type="text" id="attributes-item" placeholder="Digite um atributo">
+            <button id="add-attribute-btn">Adicionar Atributo</button>
+            <ul id="attributes-list">
+                <!-- Itens de atributo serão adicionados dinamicamente aqui -->
+            </ul>
+        </section>
+
+        <section id="user-input">
+            <h2>Anotações</h2>
+            <form id="user-input-form">
+                <label for="user-notes">Notas:</label>
+                <input type="text" id="user-notes" placeholder="Digite uma anotação">
+                <button type="submit">Adicionar Nota</button>
+            </form>
+            <ul id="user-notes-list">
+                <!-- Notas do usuário serão adicionadas dinamicamente aqui -->
+            </ul>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

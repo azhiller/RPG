@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addUserNoteBtn = document.getElementById('add-user-note-btn');
     const userNotesListElement = document.getElementById('user-notes-list');
 
-    const character = {
+    const character = loadCharacterFromStorage() || {
         name: '',
         level: '',
         hp: '',
@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Atualizar informações do personagem na interface
         updateCharacterInfo();
+
+        // Salvar personagem no armazenamento local
+        saveCharacterToStorage(character);
     });
 
     // Adicionando um evento para adicionar itens ao inventário
@@ -64,6 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Atualizar o inventário na interface
         updateInventory();
+
+        // Salvar personagem no armazenamento local
+        saveCharacterToStorage(character);
 
         // Limpar o campo de entrada após adicionar o item
         inventoryItemInput.value = '';
@@ -80,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Atualizar as qualidades e defeitos na interface
         updateQualitiesDefects();
 
+        // Salvar personagem no armazenamento local
+        saveCharacterToStorage(character);
+
         // Limpar o campo de entrada após adicionar o item
         qualitiesDefectsItemInput.value = '';
     });
@@ -95,6 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Atualizar os atributos na interface
         updateAttributes();
 
+        // Salvar personagem no armazenamento local
+        saveCharacterToStorage(character);
+
         // Limpar o campo de entrada após adicionar o item
         attributesItemInput.value = '';
     });
@@ -109,6 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Atualizar as notas do usuário na interface
         updateUserNotes();
+
+        // Salvar personagem no armazenamento local
+        saveCharacterToStorage(character);
 
         // Limpar o campo de entrada após adicionar a nota
         userNotesInput.value = '';
@@ -163,5 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.id = `user-note-${index}`;
             userNotesListElement.appendChild(listItem);
         });
+    }
+
+    // Função para salvar o personagem no armazenamento local
+    function saveCharacterToStorage(character) {
+        localStorage.setItem('character', JSON.stringify(character));
+    }
+
+    // Função para carregar o personagem do armazenamento local
+    function loadCharacterFromStorage() {
+        const characterData = localStorage.getItem('character');
+        return characterData ? JSON.parse(characterData) : null;
     }
 });

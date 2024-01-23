@@ -129,6 +129,78 @@ document.addEventListener('DOMContentLoaded', () => {
         userNotesInput.value = '';
     });
 
+    // Adicionando um evento para remover itens do inventário
+    inventoryListElement.addEventListener('click', function (event) {
+        const target = event.target;
+        if (target.tagName === 'BUTTON') {
+            const index = target.getAttribute('data-index');
+            if (index !== null) {
+                // Remover o item do inventário
+                character.inventory.splice(index, 1);
+
+                // Atualizar o inventário na interface
+                updateInventory();
+
+                // Salvar personagem no armazenamento local
+                saveCharacterToStorage(character);
+            }
+        }
+    });
+
+    // Adicionando um evento para remover itens das qualidades e defeitos
+    qualitiesDefectsListElement.addEventListener('click', function (event) {
+        const target = event.target;
+        if (target.tagName === 'BUTTON') {
+            const index = target.getAttribute('data-index');
+            if (index !== null) {
+                // Remover o item das qualidades e defeitos
+                character.qualitiesDefects.splice(index, 1);
+
+                // Atualizar as qualidades e defeitos na interface
+                updateQualitiesDefects();
+
+                // Salvar personagem no armazenamento local
+                saveCharacterToStorage(character);
+            }
+        }
+    });
+
+    // Adicionando um evento para remover itens dos atributos
+    attributesListElement.addEventListener('click', function (event) {
+        const target = event.target;
+        if (target.tagName === 'BUTTON') {
+            const index = target.getAttribute('data-index');
+            if (index !== null) {
+                // Remover o item dos atributos
+                character.attributes.splice(index, 1);
+
+                // Atualizar os atributos na interface
+                updateAttributes();
+
+                // Salvar personagem no armazenamento local
+                saveCharacterToStorage(character);
+            }
+        }
+    });
+
+    // Adicionando um evento para remover notas do usuário
+    userNotesListElement.addEventListener('click', function (event) {
+        const target = event.target;
+        if (target.tagName === 'BUTTON') {
+            const index = target.getAttribute('data-index');
+            if (index !== null) {
+                // Remover a nota do usuário
+                character.userNotes.splice(index, 1);
+
+                // Atualizar as notas do usuário na interface
+                updateUserNotes();
+
+                // Salvar personagem no armazenamento local
+                saveCharacterToStorage(character);
+            }
+        }
+    });
+
     // Função para atualizar as informações do personagem na interface
     function updateCharacterInfo() {
         characterNameInput.value = character.name;
@@ -142,7 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
         character.inventory.forEach((item, index) => {
             const listItem = document.createElement('li');
             listItem.textContent = item;
-            listItem.id = `inventory-item-${index}`;
+            
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remover';
+            removeButton.setAttribute('data-index', index);
+            
+            listItem.appendChild(removeButton);
+            
             inventoryListElement.appendChild(listItem);
         });
     }
@@ -153,7 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
         character.qualitiesDefects.forEach((item, index) => {
             const listItem = document.createElement('li');
             listItem.textContent = item;
-            listItem.id = `qualities-defects-item-${index}`;
+            
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remover';
+            removeButton.setAttribute('data-index', index);
+            
+            listItem.appendChild(removeButton);
+            
             qualitiesDefectsListElement.appendChild(listItem);
         });
     }
@@ -164,7 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
         character.attributes.forEach((item, index) => {
             const listItem = document.createElement('li');
             listItem.textContent = item;
-            listItem.id = `attributes-item-${index}`;
+            
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remover';
+            removeButton.setAttribute('data-index', index);
+            
+            listItem.appendChild(removeButton);
+            
             attributesListElement.appendChild(listItem);
         });
     }
@@ -175,7 +265,13 @@ document.addEventListener('DOMContentLoaded', () => {
         character.userNotes.forEach((note, index) => {
             const listItem = document.createElement('li');
             listItem.textContent = note;
-            listItem.id = `user-note-${index}`;
+            
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remover';
+            removeButton.setAttribute('data-index', index);
+            
+            listItem.appendChild(removeButton);
+            
             userNotesListElement.appendChild(listItem);
         });
     }
@@ -187,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para carregar o personagem do armazenamento local
     function loadCharacterFromStorage() {
-        const characterData = localStorage.getItem('character');
-        return characterData ? JSON.parse(characterData) : null;
+        const characterJSON = localStorage.getItem('character');
+        return characterJSON ? JSON.parse(characterJSON) : null;
     }
 });

@@ -18,3 +18,9 @@ body {
 }
 
 /* Adicione estilos adicionais conforme necessário */
+
+@media (max-width: 767px) {
+    body {
+        background-image: url('c:\Users\Jared\Downloads\midias moveis.webp');
+    }
+}

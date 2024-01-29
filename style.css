@@ -12,7 +12,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.4); /* Ajuste a opacidade conforme necessário (0 é transparente, 1 é opaco) */
+    background-color: rgba(255, 255, 255, 0.075); /* Ajuste a opacidade conforme necessário (0 é transparente, 1 é opaco) */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -21,6 +21,6 @@ body {
 
 @media (max-width: 767px) {
     body {
-        background-image: url('c:\Users\Jared\Downloads\midias moveis.webp');
+        background-image: url('midias moveis.webp');
     }
 }

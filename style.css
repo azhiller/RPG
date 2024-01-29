@@ -1,5 +1,5 @@
 body {
-    background-image: url('C:\Users\Jared\Documents\GitHub\RPG'); /* Substitua pelo caminho da sua imagem de fundo */
+    background-image: url'C:\Users\Jared\Documents\GitHub\RPG'; /* Substitua pelo caminho da sua imagem de fundo */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

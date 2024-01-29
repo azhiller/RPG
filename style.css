@@ -1,15 +1,20 @@
 body {
-    font-family: Arial, sans-serif;
+    background-image: url('C:\Users\Jared\Documents\GitHub\RPG'); /* Substitua pelo caminho da sua imagem de fundo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif; /* ou a fonte que preferir */
 }
 
 #app {
-    width: 80%;
-    max-width: 600px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Adapte a opacidade conforme necessário */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+/* Adicione estilos adicionais conforme necessário */

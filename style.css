@@ -1,6 +1,7 @@
 body {
     background-image: url('wp2210582.jpg'); /* Substitua pelo nome da sua imagem de fundo */
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
@@ -17,9 +18,3 @@ body {
 }
 
 /* Adicione estilos adicionais conforme necessário */
-
-@media (min-width: 768px) {
-    body {
-        background-attachment: fixed;
-    }
-}

@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Salvar personagem no armazenamento local
         saveCharacterToStorage(character);
 
+    
         saveDataToFile('data.json', JSON.stringify(character));
     });
 

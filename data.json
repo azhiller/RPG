@@ -1,0 +1,11 @@
+{
+    "informacoes": {
+        "nome":"",
+        "nivel": 0,
+        "vida": 0
+    },
+    "inventario":["espada"],
+    "qualidadesDefeitos":["corno"],
+    "qualidadesDefeitos":["lutador"],
+    "qualidadesDefeitos":["ama muffins"]
+}

@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Salvar personagem no armazenamento local
         saveCharacterToStorage(character);
+
+        saveDataToFile('data.json', JSON.stringify(character));
     });
 
     // Adicionando um evento para adicionar itens ao inventário
@@ -287,3 +289,75 @@ document.addEventListener('DOMContentLoaded', () => {
         return characterJSON ? JSON.parse(characterJSON) : null;
     }
 });
+
+// Adicionando um evento para carregar os dados de um arquivo JSON local
+document.getElementById('load-data-btn').addEventListener('click', function () {
+    // Carregar os dados de um arquivo JSON local
+    loadDataFromFile('data.json');
+});
+
+// Função para salvar os dados em um arquivo JSON local
+function saveDataToFile(filename, data) {
+    const jsonData = JSON.stringify(data);
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+
+    // Verificar se o arquivo já existe localmente
+    if (fileExistsLocally(filename)) {
+        // Se o arquivo existir, substituir o conteúdo do arquivo existente
+        const fileReader = new FileReader();
+        fileReader.onload = function() {
+            const result = fileReader.result;
+            const newBlob = new Blob([result, jsonData], { type: 'application/json' });
+
+            // Cria um novo URL para o novo blob
+            const newUrl = URL.createObjectURL(newBlob);
+
+            a.href = newUrl;
+            a.click();
+
+            // Revoga o URL do novo blob
+            URL.revokeObjectURL(newUrl);
+        };
+
+        fileReader.readAsArrayBuffer(blob);
+    } else {
+        // Se o arquivo não existir, simplesmente baixar o novo arquivo
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    // Revogar o URL do blob original
+    URL.revokeObjectURL(url);
+}
+
+// Função para carregar os dados de um arquivo JSON local
+function loadDataFromFile(filename) {
+    fetch(filename)
+        .then(response => response.json())
+        .then(data => {
+            // Atualizar o personagem com os dados carregados
+            character = data;
+
+            // Atualizar as informações na interface
+            updateCharacterInfo();
+            updateInventory();
+            updateQualitiesDefects();
+            updateAttributes();
+            updateUserNotes();
+        })
+        .catch(error => console.error('Erro ao carregar os dados:', error));
+}
+
+// Função para verificar se um arquivo existe localmente
+function fileExistsLocally(filename) {
+    // Verificar se o arquivo existe na lista de arquivos do sistema de arquivos local
+    // Aqui está um exemplo simplificado usando localStorage para verificar a existência do arquivo
+    const fileData = localStorage.getItem(filename);
+    return fileData !== null;
+}
